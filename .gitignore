@@ -13,4 +13,5 @@ out/
 .settings
 .classpath
 .factorypath
-infra/cdk.out
+rest-api/infra/cdk.out
+http-api/infra/cdk.out

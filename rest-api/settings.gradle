@@ -1,0 +1,5 @@
+
+rootProject.name="issue1443"
+
+include("app")
+include("infra")
