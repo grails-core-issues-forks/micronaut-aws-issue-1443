@@ -12,9 +12,9 @@ cd infra
 cdk synth --quiet true
 cdk deploy --require-approval never
 cd ..
-STACK_NAME=MicronautIssue1443Stack
-API_URL="$(aws cloudformation describe-stacks --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`MnTestApiUrl`].OutputValue' --output text)"
-RESPONSE="$(curl -s $API_URL)"
+STACK_NAME=MicronautIssueStack
+API_URL="$(aws cloudformation describe-stacks --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`MnIssueApiUrl`].OutputValue' --output text)"
+RESPONSE="$(curl -s -G -d 'foo=Hello%20World' $API_URL)"
 EXPECTED_RESPONSE='{"message":"Hello World"}'
 if [ "$RESPONSE" != "$EXPECTED_RESPONSE" ]; then echo $RESPONSE && exit 1; fi
 echo "success"
